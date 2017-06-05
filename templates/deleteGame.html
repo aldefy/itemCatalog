@@ -1,0 +1,19 @@
+{% extends 'main.html' %}
+{% block content %}
+{% include 'header.html' %}
+<div class = "row">
+	<div class="col-md-12">
+		<h2>You are currently deleting: {{gameItem.name}}</h2>
+	</div>
+</div>
+<div class = "row">
+	<div class = "col-md-12">
+		<form action = "#" method = "POST">
+			<div class = "form-set">
+				<button type="submit" class="btn btn-danger delete-button" type="submit" id = "submit">Delete</button>
+				<a href = "{{url_for('showGames', category_id = category_id.id, item_id = gameItem.id)}}" class = "btn btn-info" role="button">Cancel</a>
+			</div>
+		</form>
+	</div>
+</div>
+{% endblock %}

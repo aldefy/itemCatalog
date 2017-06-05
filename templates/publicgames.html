@@ -1,0 +1,26 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "publicheader.html" %}
+<div class = "row flashed">
+	{% with messages = get_flashed_messages() %}
+		{% if messages %}
+			<ul>
+			{% for message in messages %}
+				<li><strong>{{message}}</strong></li>
+			{% endfor %}
+			</ul>
+		{% endif %}
+	{% endwith %}
+</div>
+<div class = "row genre-game">
+	<div class = "col-md-4">
+		<h2 class='game-url-title'>{{genre.name}}</h2>
+		<h2 class='game-url-title'>({{items|length}} items)</h2>
+	</div>
+	<div class = "col-md-8 game-urls">
+		{% for i in items %}
+			<a class = "game-hrefs" href="{{url_for('showDescription', item_id = i.id, category_id = genre.id)}}">{{i.name}}</a>
+		{% endfor %}
+	</div>
+</div>
+{% endblock %}

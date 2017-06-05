@@ -1,0 +1,23 @@
+{% extends 'main.html' %}
+{% block content %}
+{% include 'header.html' %}
+<div class = "row">
+	<div class="col-md-12">
+		<h2>You are currently editing: {{genre.name}}</h2>
+	</div>
+</div>
+<div class = "row">
+	<div class = "col-md-12">
+		<form action = "#" method = "POST">
+			<div class = "form-set">
+				<label for = "name">Write a new name for: {{genre.name}}</label>
+				<input type = "text" class = "form-control" maxlength="100", name="name">
+				<button type="submit" class="btn btn-info add-btn" role="button" id = "submit">
+					<span>Edit</span>
+				</button>
+			</div>
+		</form>
+		<a href="{{url_for('showCatalog')}}" class = "btn btn-danger delete-button-special" role = "button">Cancel</a>
+	</div>
+</div>
+{% endblock %}

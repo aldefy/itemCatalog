@@ -1,0 +1,25 @@
+{% extends 'main.html' %}
+{% block content %}
+{% include 'header.html' %}
+<div class = "row">
+	<div class="col-md-12">
+		<h2>Add a new game in the {{genre.name}} genre!</h2>
+	</div>
+</div>
+<div class = "row">
+	<div class = "col-md-12">
+		<form action = "#" method = "POST">
+			<div class = "form-set">
+				<label for = "name">Name:</label>
+				<input type = "text" class = "form-control" maxlength="100", name="name">
+				<label for = "description">Description:</label>
+				<textarea type = "text" class = "textarea-mod form-control" name = "description"></textarea>
+				<button type="submit" class="btn btn-info add-btn" role="button" id = "submit">
+					<span>Add</span>
+				</button>
+				<a href="{{url_for('showGames', category_id = genre.id)}}" class = "btn btn-danger delete-button-new" role = "button">Cancel</a>
+			</div>
+		</form>
+	</div>
+</div>
+{% endblock %}

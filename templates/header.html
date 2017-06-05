@@ -1,0 +1,15 @@
+<div class="row header-styles">
+	<div class = "col-md-4 col-xs-4 align-column">
+		<a href = "{{url_for('showCatalog')}}" class = "btn btn-info" role = "button">HOME</a>
+	</div>
+	<div class = "col-md-4 col-xs-4">
+		<h1 class = "header">GAME CATALOG</h1>
+	</div>
+	<div class = "col-md-2 col-xs-2 align-column">
+		<a href = "{{url_for('logout')}}" class = "btn btn-danger" role = "button">LOGOUT</a>
+	</div>
+	<div class = "col-md-2 col-xs-2 align-column">
+		<img src="{{currentUser.picture}}" class="logged-in-picture">
+		<p class="logged-in-name">{{currentUser.name}}</p>
+	</div>
+</div>

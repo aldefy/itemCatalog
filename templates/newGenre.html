@@ -1,0 +1,23 @@
+{% extends 'main.html' %}
+{% block content %}
+{% include 'header.html' %}
+<div class = "row">
+	<div class="col-md-12">
+		<h2>Add a new genre!</h2>
+	</div>
+</div>
+<div class = "row">
+	<div class = "col-md-12">
+		<form action = "#" method = "POST">
+			<div class = "form-set">
+				<label for = "name">Genre:</label>
+				<input type = "text" class = "form-control" maxlength="100", name="name">
+				<button type="submit" class="btn btn-info add-btn" role="button" id = "submit">
+					<span>Add</span>
+				</button>
+				<a href="{{url_for('showCatalog')}}" class = "btn btn-danger delete-button-new" role = "button">Cancel</a>
+			</div>
+		</form>
+	</div>
+</div>
+{% endblock %}

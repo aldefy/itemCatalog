@@ -1,0 +1,25 @@
+{% extends 'main.html' %}
+{% block content %}
+{% include 'header.html' %}
+<div class = "row">
+	<div class="col-md-12">
+		<h2>You are currently editing: {{gameItem.name}}</h2>
+	</div>
+</div>
+<div class = "row">
+	<div class = "col-md-12">
+		<form action = "#" method = "POST">
+			<div class = "form-set">
+				<label for = "name">Write a new name for: {{gameItem.name}}</label>
+				<input type = "text" value = "{{gameItem.name}}" class = "form-control" maxlength="100", name="name">
+				<label for = "description">Write a new description for: {{gameItem.name}}</label>
+				<textarea type = "text" class = "textarea-mod form-control" name = "description">{{gameItem.description}}</textarea>
+				<button type="submit" class="btn btn-info add-btn" role="button" id = "submit">
+					<span>Edit</span>
+				</button>
+			</div>
+		</form>
+		<a href="{{url_for('showDescription', category_id = category_id.id, item_id = gameItem.id)}}" class = "btn btn-danger delete-button-special" role = "button">Cancel</a>
+	</div>
+</div>
+{% endblock %}
