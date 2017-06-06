@@ -1,6 +1,9 @@
 from flask import Flask, render_template, request, redirect, jsonify, url_for, flash
 from flask import session as login_session
 from flask import make_response
+from flask import g
+
+from functools import wraps
 
 from sqlalchemy import create_engine, asc, desc
 from sqlalchemy.orm import sessionmaker
@@ -92,10 +95,10 @@ def addGenre():
 
 @app.route('/genre/<int:category_id>/delete/', methods=['GET', 'POST'])
 def deleteGenre(category_id):
-	toDelete = session.query(Categories).filter_by(id=category_id).one()
 	if 'username' not in login_session:
 		flash("You are not logged in.")
 		return redirect('/login')
+	toDelete = session.query(Categories).filter_by(id=category_id).one()
 	if toDelete.user_id != login_session['user_id']:
 		flash("You can't delete genres you didn't create.")
 		return redirect(url_for('showCatalog'))
@@ -112,10 +115,10 @@ def deleteGenre(category_id):
 
 @app.route('/genre/<int:category_id>/edit/', methods=["GET", "POST"])
 def editGenre(category_id):
-	toEdit = session.query(Categories).filter_by(id = category_id).one()
 	if 'username' not in login_session:
 		flash("You are not logged in.")
 		return redirect('/login')
+	toEdit = session.query(Categories).filter_by(id = category_id).one()
 	if toEdit.user_id != login_session['user_id']:
 		flash("You can't edit genres you didn't create.")
 		return redirect(url_for('showCatalog'))
@@ -295,6 +298,7 @@ def gconnect():
 @app.route('/login/success')
 def success():
 	return render_template('success.html', login_session = login_session)
+	
 # Google Connect disconnect
 @app.route('/gdisconnect')
 def gdisconnect():
